@@ -36,6 +36,7 @@
   searchField.addEventListener('input', function () {
     showDeleteBtn();
     enableSubmitBtn();
+    isSearchFieldValueUrl();
     if (searchField.value === '') {
       hideDeleteBtn();
       disableSubmitBtn();
@@ -69,5 +70,23 @@
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'https://super‑analytics.com/');
     xhr.send(formData);
-  })
+  });
+
+  // var re = new RegExp('#\b(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))#iS');
+  var re = /^(https?|ftp):/ + /[^\s/$.?#].[^\s]*$/;
+  var tipsList = searchForm.querySelector('#tips-list');
+
+  function isSearchFieldValueUrl () {
+    if (re.match(searchField.value) !== null) {
+      tipsList.classList.add('tips-list--show');
+    }
+  }
+
+  // function escapeRegExp(string) {
+  //   //([.*+?^${}()|\[\]/\\])
+  //   //(a)(ab)  aab $1 = a, $2=ab
+  //   //(a+)(.b{2}).* aadbbc $1=aa $2=dbb
+  //   return string.replace(/(a+)(.b{2}).*/, "\\$1");
+  // }
+
 })();
