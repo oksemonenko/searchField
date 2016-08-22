@@ -4,6 +4,19 @@
   var searchForm = document.getElementById('search');
   var searchField = searchForm.querySelector('#field');
   var deleteBtn = searchForm.querySelector('#delete');
+  var submitBtn = searchForm.querySelector('#submit');
+
+
+  // Дисейблит кнопку отправки формы
+  disableSubmitBtn();
+
+  function disableSubmitBtn () {
+    submitBtn.setAttribute('disabled', true);
+  }
+
+  function enableSubmitBtn () {
+    submitBtn.removeAttribute('disabled');
+  }
 
   function hideDeleteBtn () {
     deleteBtn.classList.remove('delete-btn--show');
@@ -22,8 +35,10 @@
    */
   searchField.addEventListener('keyup', function () {
     showDeleteBtn();
+    enableSubmitBtn();
     if (searchField.value === '') {
       hideDeleteBtn();
+      disableSubmitBtn();
     }
   });
 
@@ -33,5 +48,6 @@
   deleteBtn.addEventListener('click', function () {
     deleteSearchFieldValue();
     hideDeleteBtn();
-  })
+    disableSubmitBtn();
+  });
 })();
