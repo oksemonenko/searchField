@@ -33,7 +33,7 @@
   /*Показывает кнопку-крестик, если в поле введен хотя бы один символ
   ** и прячет кнопку-крестик, если поле пустое
    */
-  searchField.addEventListener('keyup', function () {
+  searchField.addEventListener('input', function () {
     showDeleteBtn();
     enableSubmitBtn();
     if (searchField.value === '') {
@@ -50,4 +50,24 @@
     hideDeleteBtn();
     disableSubmitBtn();
   });
+
+  /*Отправляет данные формы на адрес super‑analytics.com
+  ** в запросе: идентификатор формы и поле query, содержащее введённый текст
+   */
+  searchForm.addEventListener('submit' ,function (evt) {
+    evt.preventDefault();
+
+    var formData = new FormData(document.forms.search);
+    var formId = searchForm.getAttribute('id');
+
+    //Добавляет идентификатор формы в тело запроса
+    formData.append('formID', formId);
+
+    //Удаляет значение поля submit из тела запроса
+    formData.delete('submit', 'submit.value');
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'https://super‑analytics.com/');
+    xhr.send(formData);
+  })
 })();
