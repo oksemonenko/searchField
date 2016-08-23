@@ -1,0 +1,26 @@
+.tip {
+  display: block;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+
+  &:hover {
+    background-color: #f4f4f4;
+  }
+}
+
+.tip__type {
+  margin-left: 10px;
+  font-weight: normal;
+  color: blue;
+}
+
+.tip__in {
+  margin-right: 5px;
+  color: black;
+}

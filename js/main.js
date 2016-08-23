@@ -116,9 +116,13 @@
 
 
       var span = document.createElement('span');
+      var inSpan = document.createElement('span');
       tip.appendChild(span);
       span.textContent = suggestionType[i];
       span.classList.add('tip__type');
+      span.insertBefore(inSpan, span.firstChild);
+      inSpan.textContent = 'in';
+      inSpan.classList.add('tip__in');
     });
 
 
