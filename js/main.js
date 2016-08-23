@@ -92,6 +92,7 @@
   var tip2 = tipsList.querySelector('#tip-2');
   var tip3 = tipsList.querySelector('#tip-3');
   var tips = Array.prototype.slice.call(searchForm.querySelectorAll('.tip'));
+  // var tipTypes = Array.prototype.slice.call(searchForm.querySelectorAll('.tip__type'));
 
   function setValuesAndAttributesForTips () {
     var suggestionType = {
@@ -112,7 +113,19 @@
         'super‑analytics.com/?' +
         'suggestionType=' + suggestionType[i] + '&' +
         'query=' + query);
+
+
+      var span = document.createElement('span');
+      tip.appendChild(span);
+      span.textContent = suggestionType[i];
+      span.classList.add('tip__type');
     });
+
+
+  //
+  //   tipTypes.forEach(function (tipType, i) {
+  //     tipType.textContent = suggestionType[i];
+  //   })
   }
 
 
