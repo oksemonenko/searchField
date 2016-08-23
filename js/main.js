@@ -88,11 +88,12 @@
   // var reg = /[^\s\/$.?#].[^\s]*/;
   var re = new RegExp('^(https?|ftp):\/\/([^\s/$.?#].[^\s]*)$');
   var tipsList = searchForm.querySelector('#tips-list');
-  var tip1 = tipsList.querySelector('#tip-1');
-  var tip2 = tipsList.querySelector('#tip-2');
-  var tip3 = tipsList.querySelector('#tip-3');
+  var tipLink1 = tipsList.querySelector('#tip-link-1');
+  var tipLink2 = tipsList.querySelector('#tip-link-2');
+  var tipLink3 = tipsList.querySelector('#tip-link-3');
   var tips = Array.prototype.slice.call(searchForm.querySelectorAll('.tip'));
-  // var tipTypes = Array.prototype.slice.call(searchForm.querySelectorAll('.tip__type'));
+  // var tipLinks = Array.prototype.slice.call(searchForm.querySelectorAll('.tip__link'));
+  var tipTypes = Array.prototype.slice.call(searchForm.querySelectorAll('.tip__type'));
 
   function setValuesAndAttributesForTips () {
     var suggestionType = {
@@ -101,28 +102,35 @@
       2: 'URLOverview'
     };
 
-    tip1.textContent = searchField.value.match(re)[0];
-    tip2.textContent = 'привет';
-    tip3.textContent = searchField.value.replace(re, '$2');
+    tipLink1.textContent = searchField.value.match(re)[0];
+    tipLink2.textContent = 'привет';
+    tipLink3.textContent = searchField.value.replace(re, '$2');
 
 
     tips.forEach(function (tip, i) {
-      var query = tip.textContent;
+      var query = tip.children[0].textContent;
 
       tip.setAttribute('href',
         'super‑analytics.com/?' +
         'suggestionType=' + suggestionType[i] + '&' +
         'query=' + query);
 
+      // var linkSpan = document.createElement('span');
+      // tip.appendChild(linkSpan);
+      //
+      //
+      // var span = document.createElement('span');
+      // var inSpan = document.createElement('span');
+      // tip.appendChild(span);
+      // span.textContent = suggestionType[i];
+      // span.classList.add('tip__type');
+      // span.insertBefore(inSpan, span.firstChild);
+      // inSpan.textContent = 'in';
+      // inSpan.classList.add('tip__in');
+    });
 
-      var span = document.createElement('span');
-      var inSpan = document.createElement('span');
-      tip.appendChild(span);
-      span.textContent = suggestionType[i];
-      span.classList.add('tip__type');
-      span.insertBefore(inSpan, span.firstChild);
-      inSpan.textContent = 'in';
-      inSpan.classList.add('tip__in');
+    tipTypes.forEach(function (tipType, i) {
+      tipType.textContent = suggestionType[i];
     });
 
 

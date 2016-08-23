@@ -1,5 +1,5 @@
 .tip {
-  display: block;
+  display: flex;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 10px;
@@ -8,19 +8,24 @@
   font-weight: bold;
   text-decoration: none;
   color: black;
+  overflow: hidden;
 
   &:hover {
     background-color: #f4f4f4;
   }
 }
 
+.tip__link {
+  margin-right: 10px;
+  overflow: hidden;
+}
+
 .tip__type {
-  margin-left: 10px;
+  margin-left: 5px;
   font-weight: normal;
   color: blue;
 }
 
 .tip__in {
-  margin-right: 5px;
   color: black;
 }
