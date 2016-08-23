@@ -19,11 +19,11 @@
   }
 
   function hideDeleteBtn () {
-    deleteBtn.classList.remove('delete-btn--show');
+    deleteBtn.classList.remove('search-form__delete-btn--show');
   }
 
   function showDeleteBtn () {
-    deleteBtn.classList.add('delete-btn--show');
+    deleteBtn.classList.add('search-form__delete-btn--show');
   }
 
   function deleteSearchFieldValue () {

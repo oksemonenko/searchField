@@ -6,16 +6,18 @@
   <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-  <form class="search-form" name="search" id="search" method="post" enctype="multipart/form-data">
-    <input id="field" name="query" type="text">
-    <div class="delete-btn" id="delete"><span>x</span></div>
-    <input id="submit" name="submit" type="submit" value="Search">
-    <ul class="tips-list" id="tips-list">
-      <li><a class="tip" id="tip-1" href=""></a></li>
-      <li><a class="tip" id="tip-2" href=""></a></li>
-      <li><a class="tip" id="tip-3" href=""></a></li>
-    </ul>
-  </form>
+  <div class="container">
+    <form class="search-form" name="search" id="search" method="post" enctype="multipart/form-data">
+      <input class="search-form__input" id="field" name="query" type="text" placeholder="Input any text...">
+      <div class="search-form__delete-btn" id="delete"><span>&times;</span></div>
+      <input class="search-form__btn" id="submit" name="submit" type="submit" value="Search">
+      <ul class="tips-list" id="tips-list">
+        <li><a class="tip" id="tip-1" href=""></a></li>
+        <li><a class="tip" id="tip-2" href=""></a></li>
+        <li><a class="tip" id="tip-3" href=""></a></li>
+      </ul>
+    </form>
+  </div>
 <script src="js/main.js"></script>
 </body>
 </html>
