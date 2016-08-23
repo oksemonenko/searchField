@@ -30,6 +30,14 @@
     searchField.value = '';
   }
 
+  function showTipsList () {
+    tipsList.classList.add('tips-list--show');
+  }
+
+  function hideTipsList () {
+    tipsList.classList.remove('tips-list--show');
+  }
+
   /*Показывает кнопку-крестик, если в поле введен хотя бы один символ
   ** и прячет кнопку-крестик, если поле пустое
    */
@@ -40,6 +48,7 @@
     if (searchField.value === '') {
       hideDeleteBtn();
       disableSubmitBtn();
+      hideTipsList();
     }
   });
 
@@ -50,6 +59,7 @@
     deleteSearchFieldValue();
     hideDeleteBtn();
     disableSubmitBtn();
+    hideTipsList();
   });
 
   /*Отправляет данные формы на адрес super‑analytics.com
@@ -73,12 +83,22 @@
   });
 
   // var re = new RegExp('#\b(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))#iS');
-  var re = /^(https?|ftp):/ + /[^\s/$.?#].[^\s]*$/;
+  // var re = /^(https?|ftp):/ + /[^\s/$.?#].[^\s]*$/;
+  ///^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/
+  // var reg = /[^\s\/$.?#].[^\s]*/;
+  var re = new RegExp('^(https?|ftp):\/\/([^\s/$.?#].[^\s]*)$');
   var tipsList = searchForm.querySelector('#tips-list');
+  var tip1 = tipsList.querySelector('#tip-1');
+  var tip2 = tipsList.querySelector('#tip-2');
+  var tip3 = tipsList.querySelector('#tip-3');
 
   function isSearchFieldValueUrl () {
-    if (re.match(searchField.value) !== null) {
-      tipsList.classList.add('tips-list--show');
+    if (searchField.value.match(re) !== null) {
+      showTipsList();
+      tip1.textContent = searchField.value.match(re)[0];
+      tip2.textContent = 'привет';
+      tip3.textContent = searchField.value.replace(re, '$2');
+      tip1.setAttribute('href', 'super‑analytics.com/' + tip1.textContent);
     }
   }
 
