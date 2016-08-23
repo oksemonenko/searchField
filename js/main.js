@@ -91,14 +91,36 @@
   var tip1 = tipsList.querySelector('#tip-1');
   var tip2 = tipsList.querySelector('#tip-2');
   var tip3 = tipsList.querySelector('#tip-3');
+  var tips = Array.prototype.slice.call(searchForm.querySelectorAll('.tip'));
+
+  function setValuesAndAttributesForTips () {
+    var suggestionType = {
+      0: 'PhraseOverview',
+      1: 'DomainOverview',
+      2: 'URLOverview'
+    };
+
+    tip1.textContent = searchField.value.match(re)[0];
+    tip2.textContent = 'привет';
+    tip3.textContent = searchField.value.replace(re, '$2');
+
+
+    tips.forEach(function (tip, i) {
+      var query = tip.textContent;
+
+      tip.setAttribute('href',
+        'super‑analytics.com/?' +
+        'suggestionType=' + suggestionType[i] + '&' +
+        'query=' + query);
+    });
+  }
+
 
   function isSearchFieldValueUrl () {
     if (searchField.value.match(re) !== null) {
       showTipsList();
-      tip1.textContent = searchField.value.match(re)[0];
-      tip2.textContent = 'привет';
-      tip3.textContent = searchField.value.replace(re, '$2');
-      tip1.setAttribute('href', 'super‑analytics.com/' + tip1.textContent);
+      setValuesAndAttributesForTips();
+      // tip1.setAttribute('href', 'super‑analytics.com/?' + tip1.textContent);
     }
   }
 
