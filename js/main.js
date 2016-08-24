@@ -98,9 +98,9 @@
 
   function setValuesAndAttributesForTips () {
     var suggestionType = {
-      0: 'PhraseOverview',
-      1: 'DomainOverview',
-      2: 'URLOverview'
+      0: 'Phrase Overview',
+      1: 'Domain Overview',
+      2: 'URL Overview'
     };
 
     // tipLink1.textContent = searchField.value.match(re)[0];
@@ -126,7 +126,7 @@
 
       tip.setAttribute('href',
         'super‑analytics.com/?' +
-        'suggestionType=' + suggestionType[i] + '&' +
+        'suggestionType=' + suggestionType[i].replace(/\s+/g, '') + '&' +
         'query=' + query);
 
       // var linkSpan = document.createElement('span');
