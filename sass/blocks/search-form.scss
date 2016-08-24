@@ -42,7 +42,8 @@
 }
 
 .search-form__delete-btn {
-  display: none;
+  //display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
   position: absolute;
@@ -54,9 +55,12 @@
   font-weight: bold;
   background-color: inherit;
   color: lightgray;
+  opacity: 0;
+  transition: opacity 250ms ease-out;
   cursor: pointer;
 
   &--show {
-    display: flex;
+    //display: flex;
+    opacity: 1;
   }
 }
