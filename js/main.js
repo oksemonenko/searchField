@@ -93,7 +93,7 @@
   var tipLink2 = tipsList.querySelector('#tip-link-2');
   var tipLink3 = tipsList.querySelector('#tip-link-3');
   var tips = Array.prototype.slice.call(searchForm.querySelectorAll('.tip'));
-  // var tipLinks = Array.prototype.slice.call(searchForm.querySelectorAll('.tip__link'));
+  var tipLinks = Array.prototype.slice.call(searchForm.querySelectorAll('.tip__link'));
   var tipTypes = Array.prototype.slice.call(searchForm.querySelectorAll('.tip__type'));
 
   function setValuesAndAttributesForTips () {
@@ -129,6 +129,19 @@
         'suggestionType=' + suggestionType[i].replace(/\s+/g, '') + '&' +
         'query=' + query);
 
+      // var tipChildren = Array.prototype.slice.call(tip.children);
+      // // var tipChildrenWidth = tipChildren.forEach(function (tipChild) {
+      // //   var tipChildWidth = tipChild.offsetWidth;
+      // // });
+      //
+      // var tipChildrenWidth = tipChildren[0].offsetWidth +
+      //   tipChildren[1].offsetWidth +
+      //   tipChildren[2].offsetWidth;
+      //
+      // if (tipChildrenWidth === tip.offsetWidth) {
+      //   console.log('привет!');
+      // }
+
       // var linkSpan = document.createElement('span');
       // tip.appendChild(linkSpan);
       //
@@ -147,7 +160,13 @@
       tipType.textContent = suggestionType[i];
     });
 
+    tipLinks.forEach(function (tipLink) {
+      tipLink.addEventListener('overflow', setGradient)
+    });
 
+    function setGradient() {
+
+    }
   //
   //   tipTypes.forEach(function (tipType, i) {
   //     tipType.textContent = suggestionType[i];
