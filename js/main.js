@@ -86,7 +86,8 @@
   // var re = /^(https?|ftp):/ + /[^\s/$.?#].[^\s]*$/;
   ///^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/
   // var reg = /[^\s\/$.?#].[^\s]*/;
-  var re = new RegExp('^(https?|ftp):\/\/([^\s/$.?#].[^\s]*)$');
+  // var re = new RegExp('^(https?|ftp):\/\/([^\s/$.?#].[^\s]*)$');
+  var re = new RegExp('(https?|ftp)://(-\.)?([^\s/?\.#-]+\.?)+(/[^\s]*)?$');
   var tipsList = searchForm.querySelector('#tips-list');
   var tipLink1 = tipsList.querySelector('#tip-link-1');
   var tipLink2 = tipsList.querySelector('#tip-link-2');
@@ -102,9 +103,22 @@
       2: 'URLOverview'
     };
 
-    tipLink1.textContent = searchField.value.match(re)[0];
-    tipLink2.textContent = 'привет';
-    tipLink3.textContent = searchField.value.replace(re, '$2');
+    // tipLink1.textContent = searchField.value.match(re)[0];
+    // tipLink2.textContent = 'привет';
+    // tipLink3.textContent = searchField.value.replace(re, '$2');
+
+    // tip1.textContent = searchField.value.match(re)[0];
+    // tip2.textContent = 'привет';
+    // tip3.textContent = searchField.value.replace(re, '$2');
+
+
+    var url = document.createElement('a');
+    url.href = searchField.value;
+    // var prot = url.protocol;
+
+    tipLink1.textContent = url.href;
+    tipLink2.textContent = url.hostname;
+    tipLink3.textContent = url.hostname + url.pathname + url.search + url.hash;
 
 
     tips.forEach(function (tip, i) {
