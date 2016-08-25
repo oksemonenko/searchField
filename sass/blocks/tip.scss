@@ -1,20 +1,19 @@
 .tip {
-  //position: relative;
   display: flex;
   flex-wrap: nowrap;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  font-size: 14px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 12px;
+  padding-right: 12px;
+  font-size: 12px;
   font-weight: bold;
   text-decoration: none;
-  color: black;
+  color: $black;
   overflow: hidden;
   white-space: nowrap;
 
   &:hover {
-    background-color: #f4f4f4;
+    background-color: $light;
   }
 }
 
@@ -31,20 +30,21 @@
     right: 0;
     width: 8%;
     height: 100%;
-    background-image: linear-gradient(to right, rgba(231,231,226,0) 0%, white 100%);
+    background-image: linear-gradient(to right, rgba(231,231,226,0) 0%, $white 100%);
   }
 }
 
 .tip:hover .tip__link--overflowed::after {
-  background-image: linear-gradient(to right, rgba(231,231,226,0) 0%, #f4f4f4 100%);
+  background-image: linear-gradient(to right, rgba(231,231,226,0) 0%, $light 100%);
 }
 
 .tip__type {
   margin-left: 5px;
   font-weight: normal;
-  color: blue;
+  color: $blue;
 }
 
 .tip__in {
-  color: black;
+  font-weight: normal;
+  color: $black;
 }

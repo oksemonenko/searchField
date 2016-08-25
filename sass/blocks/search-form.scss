@@ -18,7 +18,7 @@
     right: 20px;
     width: 12%;
     height: 90%;
-    background-image: linear-gradient(to right, rgba(231, 231, 226, 0) 0%, white 100%);
+    background-image: linear-gradient(to right, rgba(231, 231, 226, 0) 0%, $white 100%);
   }
 }
 
@@ -29,7 +29,7 @@
   box-sizing: border-box;
   font-family: $font-family;
   font-size: 16px;
-  background-color: white;
+  background-color: $white;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   border: 1px solid gray;
@@ -45,11 +45,12 @@
   width: 20%;
   padding: 0;
   box-sizing: border-box;
+  font-family: $font-family;
   font-size: 16px;
   font-weight: bold;
   text-align: center;
-  background-color: $brown;
-  color: white;
+  background-color: $lightbrown;
+  color: $white;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   border: none;
@@ -65,14 +66,14 @@
   }
 
   &:hover {
-    background-color: $lightbrown;
+    background-color: $brown;
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: 0.6;
 
     &:hover {
-      background-color: $brown;
+      background-color: $lightbrown;
       cursor: default;
     }
   }
@@ -86,9 +87,10 @@
   top: 3px;
   right: 5px;
   width: 15px;
+  font-family: $font-family;
   font-size: 28px;
   background-color: transparent;
-  color: lightgray;
+  color: $lightgray;
   opacity: 0;
   transition: opacity 250ms ease-out;
   cursor: pointer;
@@ -97,7 +99,7 @@
     opacity: 1;
 
     &:hover {
-      color: darkgray;
+      color: $darkgray;
     }
   }
 }
