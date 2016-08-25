@@ -11,6 +11,7 @@
   // Дисейблит кнопку отправки формы
   disableSubmitBtn();
 
+  //Функции, которые добавляют и удаляют атрибут disable для кнопки отправки формы
   function disableSubmitBtn () {
     submitBtn.setAttribute('disabled', true);
   }
@@ -19,6 +20,7 @@
     submitBtn.removeAttribute('disabled');
   }
 
+  //Функции, показывающие и прячущие кнопку-крестик
   function hideDeleteBtn () {
     deleteBtn.classList.remove('search-form__delete-btn--show');
   }
@@ -27,10 +29,12 @@
     deleteBtn.classList.add('search-form__delete-btn--show');
   }
 
+  //Функция, очищающая поле ввода
   function deleteSearchFieldValue () {
     searchField.value = '';
   }
 
+  //Функции, показывающие и прячущие список подсказок
   function showTipsList () {
     tipsList.classList.add('tips-list--show');
   }
@@ -62,6 +66,18 @@
     disableSubmitBtn();
     hideTipsList();
   });
+
+  /*Функция, которая добавляет иконку лупы к кнопке поиска
+  **при маленькой ширине кнопки
+   */
+  function setSearchIconToOverflowedBtn () {
+    if (submitBtn.scrollWidth > submitBtn.clientWidth) {
+      submitBtn.classList.add('search-form__btn--icon');
+    } else {
+      submitBtn.classList.remove('search-form__btn--icon');
+    }
+  }
+  setSearchIconToOverflowedBtn();
 
   /*Отправляет данные формы на адрес super‑analytics.com
   ** в запросе: идентификатор формы и поле query, содержащее введённый текст

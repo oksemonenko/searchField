@@ -23,6 +23,7 @@
 }
 
 .search-form__btn {
+  position: relative;
   width: 20%;
   padding: 0;
   box-sizing: border-box;
@@ -36,6 +37,14 @@
   border: none;
   outline: none;
   cursor: pointer;
+
+  &--icon {
+    text-indent: -9999px;
+    background-image: url("../img/icons/search-icon.svg");
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+  }
 
   &:hover {
     background-color: orangered;
@@ -61,7 +70,7 @@
   width: 5%;
   font-size: 28px;
   font-weight: bold;
-  background-color: inherit;
+  background-color: transparent;
   color: lightgray;
   opacity: 0;
   transition: opacity 250ms ease-out;
