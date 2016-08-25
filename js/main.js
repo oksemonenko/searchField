@@ -1,6 +1,7 @@
 'use strict';
 
 (function () {
+  //Переменные для формы и кнопок
   var searchForm = document.getElementById('search');
   var searchField = searchForm.querySelector('#field');
   var deleteBtn = searchForm.querySelector('#delete');
@@ -82,12 +83,10 @@
     xhr.send(formData);
   });
 
-  // var re = new RegExp('#\b(([\w-]+://?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|/)))#iS');
-  // var re = /^(https?|ftp):/ + /[^\s/$.?#].[^\s]*$/;
-  ///^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/
-  // var reg = /[^\s\/$.?#].[^\s]*/;
-  // var re = new RegExp('^(https?|ftp):\/\/([^\s/$.?#].[^\s]*)$');
+  //Регулярное выражение для проверки на url
   var re = new RegExp('(https?|ftp)://(-\.)?([^\s/?\.#-]+\.?)+(/[^\s]*)?$');
+
+  //Переменные для ссылок и подсказок
   var tipsList = searchForm.querySelector('#tips-list');
   var tipLink1 = tipsList.querySelector('#tip-link-1');
   var tipLink2 = tipsList.querySelector('#tip-link-2');
@@ -96,26 +95,23 @@
   var tipLinks = Array.prototype.slice.call(searchForm.querySelectorAll('.tip__link'));
   var tipTypes = Array.prototype.slice.call(searchForm.querySelectorAll('.tip__type'));
 
+  /*Функция, устанавливающая значения подсказок
+  **и атрибуты для ссылок перехода по ним
+   */
   function setValuesAndAttributesForTips () {
+
+    //Типы подсказок
     var suggestionType = {
       0: 'Phrase Overview',
       1: 'Domain Overview',
       2: 'URL Overview'
     };
 
-    // tipLink1.textContent = searchField.value.match(re)[0];
-    // tipLink2.textContent = 'привет';
-    // tipLink3.textContent = searchField.value.replace(re, '$2');
-
-    // tip1.textContent = searchField.value.match(re)[0];
-    // tip2.textContent = 'привет';
-    // tip3.textContent = searchField.value.replace(re, '$2');
-
-
+    //Парсит введенный url
     var url = document.createElement('a');
     url.href = searchField.value;
-    // var prot = url.protocol;
 
+    //Устанавливает значения подсказок
     tipLink1.textContent = url.href;
     tipLink2.textContent = url.hostname;
     tipLink3.textContent = url.hostname + url.pathname + url.search + url.hash;
@@ -124,82 +120,41 @@
     tips.forEach(function (tip, i) {
       var query = tip.children[0].textContent;
 
+      //Устанавливает атрибуты для ссылок подсказок
       tip.setAttribute('href',
         'super‑analytics.com/?' +
         'suggestionType=' + suggestionType[i].replace(/\s+/g, '') + '&' +
         'query=' + query);
-
-      // var tipChildren = Array.prototype.slice.call(tip.children);
-      // // var tipChildrenWidth = tipChildren.forEach(function (tipChild) {
-      // //   var tipChildWidth = tipChild.offsetWidth;
-      // // });
-      //
-      // var tipChildrenWidth = tipChildren[0].offsetWidth +
-      //   tipChildren[1].offsetWidth +
-      //   tipChildren[2].offsetWidth;
-      //
-      // if (tipChildrenWidth === tip.offsetWidth) {
-      //   console.log('привет!');
-      // }
-
-      // var linkSpan = document.createElement('span');
-      // tip.appendChild(linkSpan);
-      //
-      //
-      // var span = document.createElement('span');
-      // var inSpan = document.createElement('span');
-      // tip.appendChild(span);
-      // span.textContent = suggestionType[i];
-      // span.classList.add('tip__type');
-      // span.insertBefore(inSpan, span.firstChild);
-      // inSpan.textContent = 'in';
-      // inSpan.classList.add('tip__in');
     });
 
+    //Устанавливает тип подсказки
     tipTypes.forEach(function (tipType, i) {
       tipType.textContent = suggestionType[i];
     });
 
+    //Функция, добавляющая градиент при переполнении блока с ссылкой
     tipLinks.forEach(function (tipLink) {
-      // tipLink.addEventListener('overflow', setGradient);
       if (tipLink.scrollWidth > tipLink.clientWidth) {
-        tipLink.classList.add('tip__link--overflowed');
+        if (tipLink.classList.contains('tip__link--overflowed')) {
+
+        } else {
+          tipLink.classList.add('tip__link--overflowed');
+        }
       } else {
         if (tipLink.classList.contains('tip__link--overflowed')) {
           tipLink.classList.remove('tip__link--overflowed');
         }
       }
     });
-
-    // function isOverflowed(element){
-    //   if (element.scrollWidth > element.clientWidth) {
-    //     console.log('привет!');
-    //   }
-    // }
-
-    // function setGradient() {
-    //   console.log('привет!');
-    // }
-  //
-  //   tipTypes.forEach(function (tipType, i) {
-  //     tipType.textContent = suggestionType[i];
-  //   })
   }
 
-
+  /*Функция проверки того, является ли введенное
+  **в поисковую строку значение ссылкой
+   */
   function isSearchFieldValueUrl () {
     if (searchField.value.match(re) !== null) {
       showTipsList();
       setValuesAndAttributesForTips();
-      // tip1.setAttribute('href', 'super‑analytics.com/?' + tip1.textContent);
     }
   }
-
-  // function escapeRegExp(string) {
-  //   //([.*+?^${}()|\[\]/\\])
-  //   //(a)(ab)  aab $1 = a, $2=ab
-  //   //(a+)(.b{2}).* aadbbc $1=aa $2=dbb
-  //   return string.replace(/(a+)(.b{2}).*/, "\\$1");
-  // }
-
 })();
