@@ -3,6 +3,7 @@
   display: flex;
   flex-wrap: wrap;
   box-sizing: border-box;
+  font-family: $font-family;
 }
 
 .search-form__input-wrapper {
@@ -17,7 +18,7 @@
     right: 20px;
     width: 12%;
     height: 90%;
-    background-image: linear-gradient(to right, rgba(231,231,226,0) 0%, white 100%);
+    background-image: linear-gradient(to right, rgba(231, 231, 226, 0) 0%, white 100%);
   }
 }
 
@@ -26,6 +27,7 @@
   padding: 10px;
   padding-right: 20px;
   box-sizing: border-box;
+  font-family: $font-family;
   font-size: 16px;
   background-color: white;
   border-top-left-radius: 3px;
@@ -46,7 +48,7 @@
   font-size: 16px;
   font-weight: bold;
   text-align: center;
-  background-color: darkorange;
+  background-color: $brown;
   color: white;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -63,14 +65,14 @@
   }
 
   &:hover {
-    background-color: orangered;
+    background-color: $lightbrown;
   }
 
   &:disabled {
-    opacity: 0.6;
+    opacity: 0.5;
 
     &:hover {
-      background-color: darkorange;
+      background-color: $brown;
       cursor: default;
     }
   }
@@ -85,7 +87,6 @@
   right: 5px;
   width: 15px;
   font-size: 28px;
-  font-weight: bold;
   background-color: transparent;
   color: lightgray;
   opacity: 0;
