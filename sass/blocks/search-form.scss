@@ -32,7 +32,7 @@
   background-color: $white;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
-  border: 1px solid gray;
+  border: 1px solid $gray;
   outline: none;
 
   &:focus {
@@ -93,10 +93,10 @@
   color: $lightgray;
   opacity: 0;
   transition: opacity 250ms ease-out;
-  cursor: pointer;
 
   &--show {
     opacity: 1;
+    cursor: pointer;
 
     &:hover {
       color: $darkgray;

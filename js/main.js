@@ -110,9 +110,6 @@
     //Добавляет идентификатор формы в тело запроса
     formData.append('formID', formId);
 
-    //Удаляет значение поля submit из тела запроса
-    formData.delete('submit', 'submit.value');
-
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'https://super‑analytics.com/');
     xhr.send(formData);
@@ -157,7 +154,7 @@
 
       //Устанавливает атрибуты для ссылок подсказок
       tip.setAttribute('href',
-        'super‑analytics.com/?' +
+        'https://super‑analytics.com/?' +
         'suggestionType=' + suggestionType[i].replace(/\s+/g, '') + '&' +
         'query=' + query);
     });
