@@ -161,12 +161,25 @@
     });
 
     tipLinks.forEach(function (tipLink) {
-      tipLink.addEventListener('overflow', setGradient)
+      // tipLink.addEventListener('overflow', setGradient);
+      if (tipLink.scrollWidth > tipLink.clientWidth) {
+        tipLink.classList.add('tip__link--overflowed');
+      } else {
+        if (tipLink.classList.contains('tip__link--overflowed')) {
+          tipLink.classList.remove('tip__link--overflowed');
+        }
+      }
     });
 
-    function setGradient() {
+    // function isOverflowed(element){
+    //   if (element.scrollWidth > element.clientWidth) {
+    //     console.log('привет!');
+    //   }
+    // }
 
-    }
+    // function setGradient() {
+    //   console.log('привет!');
+    // }
   //
   //   tipTypes.forEach(function (tipType, i) {
   //     tipType.textContent = suggestionType[i];

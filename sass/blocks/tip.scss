@@ -29,8 +29,24 @@
 }
 
 .tip__link {
+  position: relative;
   margin-right: 10px;
   overflow: hidden;
+
+  &--overflowed::after {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    right: 0;
+    width: 5%;
+    height: 100%;
+    background-image: linear-gradient(to right, rgba(231,231,226,0) 0%, white 100%);
+  }
+}
+
+.tip:hover .tip__link--overflowed::after {
+  background-image: linear-gradient(to right, rgba(231,231,226,0) 0%, #f4f4f4 100%);
 }
 
 .tip__type {
