@@ -3,9 +3,10 @@
 (function () {
   //Переменные для формы и кнопок
   var searchForm = document.getElementById('search');
-  var searchField = searchForm.querySelector('#field');
+  var searchField = searchForm.querySelector('#query');
   var deleteBtn = searchForm.querySelector('#delete');
   var submitBtn = searchForm.querySelector('#submit');
+  var searchFieldWrapper = searchForm.querySelector('#query-wrapper');
 
 
   // Дисейблит кнопку отправки формы
@@ -43,6 +44,20 @@
     tipsList.classList.remove('tips-list--show');
   }
 
+  function setGradient() {
+    if (searchField.scrollWidth > searchField.clientWidth)  {
+      if (searchFieldWrapper.classList.contains('search-form__input-wrapper--overflowed')) {
+
+      } else {
+        searchFieldWrapper.classList.add('search-form__input-wrapper--overflowed');
+      }
+    } else {
+      if (searchFieldWrapper.classList.contains('search-form__input-wrapper--overflowed')) {
+        searchFieldWrapper.classList.remove('search-form__input-wrapper--overflowed');
+      }
+    }
+  }
+
   /*Показывает кнопку-крестик, если в поле введен хотя бы один символ
   ** и прячет кнопку-крестик, если поле пустое
    */
@@ -50,6 +65,7 @@
     showDeleteBtn();
     enableSubmitBtn();
     isSearchFieldValueUrl();
+    setGradient();
     if (searchField.value === '') {
       hideDeleteBtn();
       disableSubmitBtn();
@@ -74,7 +90,9 @@
     if (submitBtn.scrollWidth > submitBtn.clientWidth) {
       submitBtn.classList.add('search-form__btn--icon');
     } else {
-      submitBtn.classList.remove('search-form__btn--icon');
+      if (submitBtn.classList.contains('search-form__btn--icon')) {
+        submitBtn.classList.remove('search-form__btn--icon');
+      }
     }
   }
   setSearchIconToOverflowedBtn();
@@ -168,7 +186,7 @@
   **в поисковую строку значение ссылкой
    */
   function isSearchFieldValueUrl () {
-    if (searchField.value.match(re) !== null) {
+    if (re.test(searchField.value) === true) {
       showTipsList();
       setValuesAndAttributesForTips();
     }
