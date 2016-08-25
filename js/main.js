@@ -33,6 +33,7 @@
   //Функция, очищающая поле ввода
   function deleteSearchFieldValue () {
     searchField.value = '';
+    searchField.focus();
   }
 
   //Функции, показывающие и прячущие список подсказок
