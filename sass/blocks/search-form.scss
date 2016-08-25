@@ -24,6 +24,7 @@
 
 .search-form__btn {
   width: 20%;
+  padding: 0;
   box-sizing: border-box;
   font-size: 16px;
   font-weight: bold;
@@ -36,13 +37,21 @@
   outline: none;
   cursor: pointer;
 
+  &:hover {
+    background-color: orangered;
+  }
+
   &:disabled {
     opacity: 0.6;
+
+    &:hover {
+      background-color: darkorange;
+      cursor: default;
+    }
   }
 }
 
 .search-form__delete-btn {
-  //display: none;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -50,7 +59,6 @@
   top: 3px;
   left: 74%;
   width: 5%;
-  //height: 100%;
   font-size: 28px;
   font-weight: bold;
   background-color: inherit;
@@ -60,7 +68,10 @@
   cursor: pointer;
 
   &--show {
-    //display: flex;
     opacity: 1;
+
+    &:hover {
+      color: darkgray;
+    }
   }
 }
